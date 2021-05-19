@@ -142,6 +142,51 @@ SIZES:
 
 */
 
+function repeated(arr) {
+	let count = {}
+	for(let i = 0; i<arr.length; i++){
+		if(count[arr[i]]){
+			count[arr[i]] = count[arr[i]] + 1
+		} else {
+			count[arr[i]] = 1
+		}
+	}
+
+	let output = 0;
+	let numCount = 0;
+	Object.keys(count).forEach( key => {
+		if(count[key] > numCount){
+			output = key
+			numCount = count[key]
+		}
+	})
+	return output
+}
+
+// console.log('repeated', repeated([3,3,4,4,4,6,6,6,1,1,4,4,4,1,1,1,1,4,4,4,1,4,4,4]))
+
+
+function reverse(str) {
+	let splitString = str.split('')
+	let output = []
+	for(let i = splitString.length - 1; i >= 0; i--){
+		output.push(splitString[i])
+	}
+	return output.join('')
+}
+
+// console.log(reverse('hello'))
+
+function findMatch(arr) {
+	arr = arr.sort()
+	for(let i=0; i<arr.length; i=i+2){
+		if(arr[i] !== arr[i + 1]){
+			return arr[i]
+		}
+	}
+}
+// console.log(findMatch([3,3,4,4,5,5,6,6,1,1,2,2,600]))
+
 function create() {
 	let counter = 0
 	return {
@@ -150,13 +195,15 @@ function create() {
     	},
   
     	print: function() {
-        	console.log(counter)
+        	// console.log(counter)
     	}
 	}
 }
 let c = create()
 c.increment()
 c.print() 
+c.increment()
+c.print()
 
 
 
@@ -170,8 +217,8 @@ function palindrome(splitString) {
 	return true
 }
 
-console.log(palindrome('kayak'))
-console.log(palindrome('hello'))
+// console.log(palindrome('kayak'))
+// console.log(palindrome('hello'))
 
 function mostRepeated(array){
 	let count = {}
@@ -205,4 +252,20 @@ function mostRepeated(array){
 	return output
 }
 
-console.log(mostRepeated([3,3,4,4,4,6,6,6,1,1,4,4,4,4,4,4,1,4,4,4]))
+// console.log(mostRepeated([3,3,4,4,4,6,6,6,1,1,4,4,4,4,4,4,1,4,4,4]))
+
+//Create a for loop that iterates up to 100 while outputting "fizz" at multiples of 3, "buzz" at multiples of 5 and "fizzbuzz" at multiples of 3 and 5.
+
+function fizzbuzz(){
+	for(let i = 1; i <= 100; i++){
+		if(i%3 === 0 && i%5 === 0){
+			console.log('fizbuzz')
+		} else if(i%3 === 0){
+			console.log('fizz')
+		} else if(i%5 === 0){
+			console.log('buzz')
+		}
+	}
+}
+
+fizzbuzz()
