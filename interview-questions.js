@@ -84,7 +84,6 @@ Updating Phase:
 Once the component gets added to the DOM, it can potentially update and re-render only when a prop or state change occurs. That happens only in this phase.
 Unmounting Phase: 
 This is the final phase of a component’s life cycle in which the component is destroyed and removed from the DOM.
- 
 
 LIFECYCLE METHODS
 componentWillMount() – Executed just before rendering takes place both on the client as well as server-side.
@@ -132,7 +131,7 @@ In order to specify how the state tree is transformed by actions, you need pure 
 Pure functions are those whose return value depends solely on the values of their arguments.
 
 input[type = "text"] {
-   color: #000000; 
+  color: #000000; 
 }
 
 SIZES:
@@ -141,6 +140,21 @@ SIZES:
 
 
 */
+
+function sumFinder(arr, num) {
+	for(let i = 0; i < arr.length; i++) {
+		for(let j = i + 1; j < arr.length; j++) {
+			if(arr[i] + arr[j] === num){
+				return true
+			}
+		}
+	}
+	return false
+}
+
+// console.log(sumFinder([6,4,3,2,1,7], 2))
+// console.log(sumFinder([6,4,3,2,1,7], 9))
+// console.log(sumFinder([2,6,20], 6))
 
 function repeated(arr) {
 	let count = {}
@@ -195,15 +209,35 @@ function create() {
     	},
   
     	print: function() {
-        	// console.log(counter)
+        	console.log(counter)
     	}
 	}
 }
 let c = create()
-c.increment()
-c.print() 
-c.increment()
-c.print()
+// c.increment()
+// c.print() 
+// c.increment()
+// c.print()
+
+function pal(str){
+	for(let i=0; i< str.length/2; i++){
+		if(str[i] !== str[str.length - i - 1]){
+			return false
+		}
+	}
+	return true
+}
+console.log(pal('racecar'))
+
+function pal2(str){
+	if(str === str.split('').reverse().join('')){
+		return true
+	} else {
+		return false
+	}
+}
+
+// console.log(pal2('racecar'))
 
 
 
@@ -268,4 +302,22 @@ function fizzbuzz(){
 	}
 }
 
-fizzbuzz()
+// fizzbuzz()
+
+function countZeros(num) {
+	let count = 0;
+	for(let i = 1; i<=num; i++){
+		let splitNum = i.toString().split('')
+		if(splitNum.includes('0')){
+			splitNum.forEach(number => {
+				if(number === '0'){
+					count++
+				}
+			})
+		}
+	}
+	return count
+}
+
+console.log(countZeros(100))
+console.log(countZeros(2014))
